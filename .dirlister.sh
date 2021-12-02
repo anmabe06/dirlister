@@ -31,24 +31,25 @@ function dirlister(){
 		#echo '' >> "$2"
 		#echo "NORMAL DIRECTORIES" >> "$2"
 
-		if [ "$ARG3" == h ]; then
-			find "$ARG1" -type f -name '.*' >> "$ARG2"
+		case $ARG3 in
+			"h")
+				find "$ARG1" -type f -name '.*' >> "$ARG2"
+				;;
+			"nh")
+				searchShownElementsInFolder "$ARG1" "$ARG2"
+				;;
+			"b" | *)
+				echo "HIDDEN DIRECTORIES" $'\n' >> "$ARG2"
+				find "$ARG1" -type f -name '.*' >> "$ARG2"
 
-		elif [ "$ARG3" == nh ]; then
-			searchShownElementsInFolder "$ARG1" "$ARG2"
+				echo "" >> "$ARG2"
+				echo "____________________________________________" >> "$ARG2"
+				echo $'\n' >> "$ARG2"
 
-		else
-			echo "HIDDEN DIRECTORIES" $'\n' >> "$ARG2"
-			find "$ARG1" -type f -name '.*' >> "$ARG2"
-
-			echo "" >> "$ARG2"
-			echo "____________________________________________" >> "$ARG2"
-			echo $'\n' >> "$ARG2"
-
-			echo "SHOWN DIRECTORIES" $'\n' >> "$ARG2"
-			searchShownElementsInFolder "$ARG1" "$ARG2"
-			
-		fi
+				echo "SHOWN DIRECTORIES" $'\n' >> "$ARG2"
+				searchShownElementsInFolder "$ARG1" "$ARG2"
+				;;
+		esac
 	}
 
 	function searchShownElementsInFolder(){
