@@ -24,12 +24,6 @@ function dirlister(){
 		ARG1="$1"
 		ARG2="$2"
 		ARG3="$3"
-		#echo "HIDDEN DIRECTORIES" >> "$2"
-		#echo '' >> "$2"
-		#echo $'\n' "$ARG3" $(find "$1" -type f -name '.*') >> "$2"
-		#echo "____________________________________________" >> "$2"
-		#echo '' >> "$2"
-		#echo "NORMAL DIRECTORIES" >> "$2"
 
 		case $ARG3 in
 			"h")
@@ -69,7 +63,7 @@ function dirlister(){
 	searchInFolder "$ARG1" "$ARG2" "$ARG3"
 }
 
-dirlister /Users/anmabe06/Desktop/dirlister pete.out b
+#dirlister /Users/anmabe06/Desktop/dirlister pete.out b
 
 #$1 => directory from where to start ; default pwd
 #$2 => .out file ; default pwd/dirlister.out
